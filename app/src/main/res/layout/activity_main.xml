@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        app:title="Task App"/>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/taskInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintEnd_toStartOf="@id/dateInputLayout"
+            app:helperTextEnabled="true"
+            app:helperText="Enter a suitable task name"
+            app:counterEnabled="true"
+            app:counterMaxLength="100"
+            android:hint="Task Name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/taskEditText"
+                android:layout_width="match_parent"
+                android:minHeight="60dp"
+                android:maxHeight="60dp"
+                android:layout_height="60dp"
+                android:inputType="text"
+                android:singleLine="true"
+                android:imeOptions="actionDone"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dateInputLayout"
+            android:layout_width="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_height="wrap_content"
+
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/taskInputLayout"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:hint="Date">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/dateEditText"
+                android:layout_width="match_parent"
+                android:minHeight="60dp"
+                android:maxHeight="60dp"
+                android:layout_height="60dp"
+                android:focusableInTouchMode="false"
+
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            app:layout_constraintTop_toBottomOf="@id/taskInputLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/completedCheckbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Completed"/>
+
+        <Button
+            app:layout_constraintTop_toBottomOf="@id/completedCheckbox"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/deleteAllTasksButton"
+            android:id="@+id/addTaskButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            app:icon="@drawable/add_fill1_wght400_grad0_opsz24"
+            />
+
+        <Button
+            app:layout_constraintTop_toBottomOf="@id/completedCheckbox"
+            app:layout_constraintStart_toEndOf="@id/addTaskButton"
+            app:layout_constraintEnd_toStartOf="@id/sortByButton"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/deleteAllTasksButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Delete All"
+            />
+
+        <Button
+            app:layout_constraintTop_toBottomOf="@id/completedCheckbox"
+            app:layout_constraintStart_toEndOf="@id/deleteAllTasksButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/sortByButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Sort By"
+            />
+
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
+            app:layout_constraintTop_toBottomOf="@id/addTaskButton"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="LinearLayoutManager"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Note: A RecyclerView can also be used -->
+    <!--<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    &lt;!&ndash; Scrollable content &ndash;&gt;
+
+
+    </androidx.core.widget.NestedScrollView>-->
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
